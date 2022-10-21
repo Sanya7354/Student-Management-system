@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Edit Attendance {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("attend2")[0].setAttribute("id", "highlight");
+	</script>
+	<form method='post' action='/editattendance'>
+	{% for i in lst %}
+	<div class="switch-field">
+	<div id="roll"> {{ i[0] }} : </div>
+	{% if i[1] == "P" %}
+	<input type='radio' name='{{ i[0] }}' value='P' id="radio-one-{{ i }}" checked> <label for="radio-one-{{ i }}">P</label>
+	<input type='radio' name='{{ i[0] }}' value='A' id="radio-two-{{ i }}"> <label for="radio-two-{{ i }}">A</label>
+	{% else %}
+	<input type='radio' name='{{ i[0] }}' value='P' id="radio-one-{{ i }}"> <label for="radio-one-{{ i }}">P</label>
+	<input type='radio' name='{{ i[0] }}' value='A' id="radio-two-{{ i }}" checked> <label for="radio-two-{{ i }}">A</label>
+	{% endif %}
+	</div>
+	{% endfor %}
+	<br>
+	<input type='submit' value='Submit' id="button3">
+	</form>
+{% endblock %}

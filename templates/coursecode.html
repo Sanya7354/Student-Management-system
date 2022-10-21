@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Course Code {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("course")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("course3")[0].setAttribute("id", "highlight");
+		function func(form)
+		{
+			if(confirm("This will delete complete course with all other related data. Are you sure ?"))
+			{
+				return true;
+			}
+			return false;
+		}
+	</script>
+	<form method='post' action='delcourse' onsubmit = "return func();">
+		<h2> Course Code : <input type='text' placeholder="Course Code" name='code' id="tb1" required>
+		<input type="submit" value="Submit" id="button3"></h2>
+	</form>
+{% endblock %}

@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title> {% block title %} Home Page {% endblock %} </title>
+		<link rel= "stylesheet" type= "text/css" href= "../static/css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<header>
+			<h1 id="header"> Academic and Attendance Portal </h1>
+		</header>
+		<h1 id='logintext'>{{ name }}</h1><hr>
+		{% if type==1 %}
+		<div class="sidenav">
+		<a href="/" class='home' id="highlight">Home</a>
+		<a href='profile' class="prof"> Profile </a>
+		<a href='coursesel' class="attend"> Attendance </a>
+		<a href='coursesel_grades', class="grade"> Grades </a>
+		<a href='logout'> Logout </a>
+		</div>
+		{% elif type==2 %}
+		<div class="sidenav">
+  		<a href="/" class="home" id="highlight">Home</a>
+		<a href='profile' class="prof">Profile</a>
+		<a href='coursesel' class="attend1">View Attendance</a>
+		<a href='coursesel_grades' class="grade1">View Grades</a>
+		<a href='coursendate' class="attend2">Add/Edit Attendance</a>
+		<a href='course_addgrades' class="grade2">Add/Edit Grades</a>
+		<a href='logout'>Logout</a>
+		</div>
+		{% else %}
+		<div class="sidenav">
+		<a href="/" class="home" id="highlight">Home</a>
+  		<a href="profile" class="prof">Profile</a>
+	  	<button class="dropdown-btn stud">Students 
+	    <i class="fa fa-caret-down"></i>
+	  	</button>
+	  	<div class="dropdown-container">
+	    <a href="addstudent" class="stud1"> Add Student </a>
+	    <a href="viewstudent" class="stud2"> View/Edit Student </a>
+	    <a href="allstudent" class="stud3"> All Students </a>
+	  	</div>
+	  	<button class="dropdown-btn fac">Faculties 
+	    <i class="fa fa-caret-down"></i>
+	  	</button>
+	  	<div class="dropdown-container">
+	    <a href="addfaculty" class="fac1"> Add Faculty </a>
+	    <a href="viewfaculty" class="fac2"> View/Edit Faculty </a>
+	    <a href="allfaculty" class="fac3"> All Faculty </a>
+	  	</div>
+	  	<button class="dropdown-btn dept">Departments 
+	    <i class="fa fa-caret-down"></i>
+	  	</button>
+	  	<div class="dropdown-container">
+	    <a href="addepartment" class="dept1"> Add Department </a>
+	    <a href="viewdepartments" class="dept2"> View Departments </a>
+	  	</div>
+	  	<button class="dropdown-btn course">Courses 
+	    <i class="fa fa-caret-down"></i>
+	  	</button>
+	  	<div class="dropdown-container">
+	    <a href="addcourse" class="course1"> Add Course </a>
+	    <a href="viewcourses" class="course2"> View Courses </a>
+	    <a href="delcourse" class="course3"> Delete Course </a>
+	  	</div>
+	  	<a href="register" class="reg">Course Registration</a>
+	  	<a href="logout">Logout</a>
+		</div>
+		<script>
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+		  dropdown[i].addEventListener("click", function() {
+		  this.classList.toggle("active");
+		  var dropdownContent = this.nextElementSibling;
+		  if (dropdownContent.style.display === "block") {
+		  dropdownContent.style.display = "none";
+		  } else {
+		  dropdownContent.style.display = "block";
+		  }
+		  });
+		}
+		</script>
+		{% endif %}
+		<div id="data">
+		{% if error %}
+			<div id="error">{{ error }}</div>
+		{% endif %}
+		{% if message %}
+			<div id="message"> ✔ {{ message }}<br></div>
+		{% endif %}
+		{% block content %}
+		{% endblock %}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Grades {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("grade1")[0].setAttribute("id", "highlight");
+	</script>
+	<table id="attendance">
+		<tr>
+			<th> Roll Number </th>
+			<th> Mid Sem Marks </th>
+			<th> End Sem Marks </th>
+			<th> Quiz Sem Marks </th>
+			<th> Total Marks </th>
+			<th> Grade </th>
+			<th> GPA </th>
+		</tr>
+		{% for i in dict %}
+		<tr>
+			<td>{{ i[0] }}</td>
+			<td>{{ i[1] }}</td>
+			<td>{{ i[2] }}</td>
+			<td>{{ i[3] }}</td>
+			<td>{{ i[4] }}</td>
+			<td>{{ i[5] }}</td>
+			<td>{{ i[6] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Add Student {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("stud")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("stud1")[0].setAttribute("id", "highlight");
+	</script>
+	<form method='post' action='/addstudent' id="loginform">
+		<table class="grade4">
+			<tr>
+				<td>Roll No. </td>
+				<td> : </td>
+				<td> <input type="number" name="roll_no" required> </td>
+			</tr>
+			<tr>
+				<td>First Name</td>
+				<td> : </td>
+				<td> <input type="text" name="first_name" required> </td>
+			</tr>
+			<tr>
+				<td>Middle Name</td>
+				<td> : </td>
+				<td> <input type="text" name="middle_name"> </td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td> : </td>
+				<td> <input type="text" name="last_name" required> </td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td> : </td>
+				<td> <input type="text" name="address" required> </td>
+			</tr>
+			<tr>
+				<td>Mobile No. </td>
+				<td> : </td>
+				<td> <input type="tel" name="mobile_no" maxlength="10" minlength="10" required> </td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td> : </td>
+				<td> <input type="email" name="email" required> </td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td> : </td>
+				<td> <input type="password" name="password" required> </td>
+			</tr>
+			<tr>
+				<td>Department</td>
+				<td> : </td>
+				<td> {% for i in depts %} <input type="radio" name="dep_id" value="{{ i[0] }}" id="{{ i[0] }}" required><label for="{{ i[0] }}"> {{ i[1] }} </label> {% endfor %} </td>
+			</tr>
+		</table>
+		<input type="submit" name="Submit" id="button2">
+	</form>
+{% endblock %}

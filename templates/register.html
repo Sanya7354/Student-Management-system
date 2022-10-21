@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Course Registration {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("reg")[0].setAttribute("id", "highlight");
+	</script>
+	<form action="register" method="post">
+	<table id="attendance">
+		<tr>
+			<td>Course Code</td>
+			<td>:</td>
+			<td> {% for i in courses %} <input type="radio" name="code" value="{{ i[0] }}" id="{{ i[0] }}" required><label for="{{ i[0] }}"> {{ i[0] }} </label> {% endfor %} </td>
+		</tr>
+		<tr>
+			<td>Department</td>
+			<td>:</td>
+			<td> {% for i in depts %} <input type="radio" name="dep_id" value="{{ i[0] }}" id="{{ i[0] }}" required><label for="{{ i[0] }}"> {{ i[1] }} </label> {% endfor %} </td>
+		</tr>
+	</table>
+	<input type="submit" name="Register" id="button2">
+	</form>
+{% endblock %}

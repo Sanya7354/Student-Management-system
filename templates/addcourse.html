@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Add Course {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("course")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("course1")[0].setAttribute("id", "highlight");
+	</script>
+	<form action="addcourse" method='post'>
+		<table class="grade4">
+			<tr>
+				<td>Course Code</td>
+				<td> : </td>
+				<td> <input type="text" name="code" required> </td>
+			</tr>
+			<tr>
+				<td>Course Name</td>
+				<td> : </td>
+				<td> <input type="text" name="name" required> </td>
+			</tr>
+			<tr>
+				<td>Credits</td>
+				<td> : </td>
+				<td> <input type="number" name="cred" step="any" required> </td>
+			</tr>
+			<tr>
+				<td>Semester No.</td>
+				<td> : </td>
+				<td> <input type="text" name="sem" required> </td>
+			</tr>
+			<tr>
+				<td>Instructor</td>
+				<td> : </td>
+				<td> {% for i in fac %} <input type="radio" name="ins_id" value="{{ i[1] }}" id="{{ i[1] }}" required><label for="{{ i[1] }}"> {{ i[0] }} </label> {% endfor %} </td>
+			</tr>
+		</table>
+		<input type="submit" name="Add Course" id="button2">
+	</form>
+{% endblock %}

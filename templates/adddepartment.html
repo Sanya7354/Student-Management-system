@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Add Department {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("dept")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("dept1")[0].setAttribute("id", "highlight");
+	</script>
+	<form action='/addepartment' method='post'>
+		<h2> Department Code :&nbsp; <input type="text" name="dep_code" placeholder="Department Code" id="tb1" required></h2>
+		<h2> Department Name : <input type="text" name="dep_name" placeholder="Department Name" id="tb1" required></h2>
+		<input type="submit" name="Add Department" id="button1">
+	</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Add Attendance {% endblock %}
+{% block content %}
+	{% if hrf=='/allstudent' %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("stud")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("stud3")[0].setAttribute("id", "highlight");
+	</script>
+	{% else %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("fac")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("fac3")[0].setAttribute("id", "highlight");
+	</script>
+	{% endif %}
+	<form action="{{ hrf }}" method='post'>
+		<h1 id="course">Department</h1>
+		{% for i in dept %}
+		<label class="container">{{ i[1] }}<input type="checkbox" value="{{ i[0] }}" name="dep_id"><span class="checkmark"></span></label>
+		{% endfor %}
+		<br>
+		<input type="submit" name="Submit" id="button3">
+	</form>
+
+{% endblock %}

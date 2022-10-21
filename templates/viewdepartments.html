@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Add Attendance {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("dept")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("dept2")[0].setAttribute("id", "highlight");
+	</script>
+	<table id="attendance">
+		<tr>
+			<th>Department Code</th>
+			<th>Department Name</th>
+		</tr>
+		{% for i in lst %}
+		<tr>
+			<td>{{ i[0] }}</td>
+			<td>{{ i[1] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

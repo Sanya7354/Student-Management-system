@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Add Attendance {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("attend2")[0].setAttribute("id", "highlight");
+	</script>
+	<form method="post" action="/addattendance2">
+		{% for i in lst %}
+		<div class="switch-field">
+		<div id="roll"> {{ i }} : </div>
+		<input type='radio' name='{{ i }}' value='P' id="radio-one-{{ i }}"> <label for="radio-one-{{ i }}">P</label>
+		<input type='radio' name='{{ i }}' value='A' id="radio-two-{{ i }}" checked> <label for="radio-two-{{ i }}">A</label>
+		</div>
+		{% endfor %}
+		<input type='submit' value='Submit' id="button3">
+	</form>
+{% endblock %}

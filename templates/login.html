@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title> Login </title>
+		<link rel= "stylesheet" type= "text/css" href= "../static/css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<h1> Academic and Attendance Portal </h1>
+		</header>
+		<h1 id="logintext"> Login </h1><hr>
+		<div id="loginform">
+			{% if error %}
+			<div id="error">{{ error }}</div>
+			{% endif %}
+		<form method='post' action='/login'>
+			<h3> Username</h3> <input type='text' name='username' id="tb1" placeholder="Enter Username" required><br>
+			<h3> Password</h3> <input type='password' name='password' id="tb1" placeholder="Enter Password" required><br>
+			<input type='submit' value='Submit' id="button1">
+		</form>
+		</div>
+	</body>
+
+</html>

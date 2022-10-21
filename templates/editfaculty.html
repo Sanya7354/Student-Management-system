@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} Edit Faculty {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("fac")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("fac2")[0].setAttribute("id", "highlight");
+	</script>
+	<form action='/editfaculty' method='post'>
+		<table class="grade4">
+			<tr>
+				<td>Faculty Id </td>
+				<td> : </td>
+				<td> <input type="number" name="faculty_id" value="{{ dict['faculty_id'] }}" readonly id="roll1"> </td>
+			</tr>
+			<tr>
+				<td>First Name</td>
+				<td> : </td>
+				<td> <input type="text" name="first_name" value="{{ dict['first_name'] }}" required> </td>
+			</tr>
+			<tr>
+				<td>Middle Name</td>
+				<td> : </td>
+				<td> <input type="text" name="middle_name" value="{{ dict['middle_name'] }}"> </td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td> : </td>
+				<td> <input type="text" name="last_name" value="{{ dict['last_name'] }}" required> </td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td> : </td>
+				<td> <input type="text" name="address" value="{{ dict['address'] }}" required> </td>
+			</tr>
+			<tr>
+				<td>Mobile No. </td>
+				<td> : </td>
+				<td> <input type="tel" name="mobile_no" maxlength="10" minlength="10" value="{{ dict['mobile_no'] }}" required> </td>
+			</tr>
+			<tr>
+				<td>Department</td>
+				<td> : </td>
+				<td> {% for i in depts %} {% if i[0]==dict['dep_id'] %} <input type="radio" name="dep_id" value="{{ i[0] }}" id="{{ i[0] }}" checked required> <label for="{{ i[0] }}"> {{ i[1] }} </label> {% else %} <input type="radio" name="dep_id" value="{{ i[0] }}" id="{{ i[0] }}" required> <label for="{{ i[0] }}"> {{ i[1] }} </label> {%  endif %} {% endfor %} </td>
+			</tr>
+		</table>
+		<input type="submit" value="Submit" id="button2">
+	</form>
+{% endblock %}

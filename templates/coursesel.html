@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Select Course {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	{% if hrf=='/attendance' %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("attend1")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("attend")[0].setAttribute("id", "highlight");
+	</script>
+	{% elif hrf=='/addgrades' %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("grade2")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("grade")[0].setAttribute("id", "highlight");
+	</script>
+	{% else %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("grade1")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("grade2")[0].setAttribute("id", "highlight");
+	</script>
+	{% endif %}
+	<h1 id="course">Course</h1>
+	<form method="post" action={{ hrf }}>
+		{% for i in lst %}
+		<input type='radio' name='course' value="{{ i[0] }}" id="{{ i[0] }}" required> <label for="{{ i[0] }}"> {{ i[0] }} </label> <br>
+		{% endfor %}
+		<input type='submit' value="Submit" id="button3">
+	</form>
+{% endblock %}

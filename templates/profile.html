@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("prof")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		function func(form)
+		{
+			if(confirm("This will delete complete profile with all other related data. Are you sure ?"))
+			{
+				return true;
+			}
+			return false;
+		}
+	</script>
+	<table>
+	{% for i in dict %}
+		{% if i !='type' %}
+		<tr>
+			<th scope="col" id="key">{{ i }}</th>
+			<td> : </td>
+			<td>{{ dict[i] }}</td>
+		</tr>
+		{% endif %}
+	{% endfor %}
+	</table>
+	{% if edit %}
+	{% if edit==1 %}
+	<form method='post' action='/editstudent'>
+		<input type='hidden' name='username' value="{{ dict['Username'] }}">
+		<input type="Submit" value="Edit Profile" id="button2">
+	</form>
+	<form method='post' action='/delstudent' onsubmit = "return func();">
+		<input type='hidden' name='username' value="{{ dict['Username'] }}">
+		<input type="Submit" value="Delete Student" id="button2">
+	</form>
+	{% elif edit==2 %}
+	<form method='post' action='/editfaculty'>
+		<input type='hidden' name='username' value="{{ dict['Username'] }}">
+		<input type="Submit" value="Edit Profile" id="button2">
+	</form>
+	<form method='post' action='/delfaculty' onsubmit = "return func();">
+		<input type='hidden' name='username' value="{{ dict['Username'] }}">
+		<input type="Submit" value="Delete Faculty" id="button2">
+	</form>
+	{% endif %}
+	{% endif %}
+{% endblock %}

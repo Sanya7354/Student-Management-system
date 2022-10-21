@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %} Add Grades {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("grade2")[0].setAttribute("id", "highlight");
+		function updat()
+		{
+			var table = document.getElementById("attendance");
+			n=table.rows.length;
+			for (var i=1; i<n; i++)
+			{
+				var sum=0;
+				x=parseInt(table.rows[i].cells[1].children[0].value);
+				if(x)
+				{
+					sum+=x;
+				}
+				x=parseInt(table.rows[i].cells[2].children[0].value);
+				if(x)
+				{
+					sum+=x;
+				}
+				x=parseInt(table.rows[i].cells[3].children[0].value);
+				if(x)
+				{
+					sum+=x;
+				}
+				table.rows[i].cells[4].innerHTML=sum;
+			}
+		}
+		function updat2()
+		{
+			var table = document.getElementById("attendance");
+			n=table.rows.length;
+			for (var i=1; i<n; i++)
+			{
+				var sum=0;
+				x=parseInt(table.rows[i].cells[1].children[0].value);
+				if(!x)
+				{
+					table.rows[i].cells[1].children[0].value=0
+				}
+				x=parseInt(table.rows[i].cells[2].children[0].value);
+				if(!x)
+				{
+					table.rows[i].cells[2].children[0].value=0
+				}
+				x=parseInt(table.rows[i].cells[3].children[0].value);
+				if(!x)
+				{
+					table.rows[i].cells[3].children[0].value
+				}
+			}
+		}
+	</script>
+	<form method="post" action='/addgrades2' onsubmit="updat2()">
+	<input type="hidden" name="course" value="{{ course }}">
+	<table id="attendance" class="grade3">
+		<tr>
+			<th>Roll No.</th>
+			<th>Mid Sem Marks</th>
+			<th>End Sem Marks</th>
+			<th>Quiz Marks</th>
+			<th>Total Marks</th>
+		</tr>
+			{% for i in lst %}
+			<tr>
+				<td> <input type="number" name="rollno" value={{ i[0] }} id="roll1" readonly></td>
+				<td> <input type="number" name="midsem" placeholder="MidSem Marks" value={{ i[1] }} id="midsem" onkeyup="updat()"></td>
+				<td> <input type="number" name="endsem" placeholder="EndSem Marks" value={{ i[2] }} onkeyup="updat()"></td>
+				<td> <input type="number" name="quiz" placeholder="Quiz Marks" value={{ i[3] }} onkeyup="updat()"></td>
+				<td> {{ i[4] }} </td>
+			</tr>
+			{% endfor %}
+	</table>
+	<input type='submit' value="Submit" id="button2">
+	</form>
+{% endblock %}

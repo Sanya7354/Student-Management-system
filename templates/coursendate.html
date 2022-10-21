@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Select Course {% endblock %}
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/radio1.css') }}">
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("attend2")[0].setAttribute("id", "highlight");
+	</script>
+	<form method='post' action='/addattendance'>
+		<h1 id="course">Course</h1>
+		{% for i in lst %}
+		<input type='radio' name='course' value="{{ i }}" id="{{ i }}" required> <label for="{{ i }}"> {{ i }} </label> <br>
+		{% endfor %}
+		<br>
+		<h1 id="course">Date</h1>
+		<input type='date' name='date' id="date" required><br>
+		<input type='submit' value="Submit" id="button3">
+	</form>
+{% endblock %}

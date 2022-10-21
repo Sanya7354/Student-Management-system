@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Faculty ID {% endblock %}
+{% block content %}
+	<script>
+		document.getElementsByClassName("home")[0].setAttribute("id", "");
+		document.getElementsByClassName("fac")[0].setAttribute("id", "highlight");
+		document.getElementsByClassName("fac2")[0].setAttribute("id", "highlight");
+	</script>
+	<form action="viewfaculty" method="post">
+		<h2> Faculty ID : <input type='number' placeholder="Faculty Id" name='faculty_id' id="tb1" required>
+		<input type="submit" value="Submit" id="button3"></h2>
+	</form>
+{% endblock %}
